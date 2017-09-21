@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Upload files</title>
+</head>
+<body onload="updateSize();">
+	<form name="uploadingForm" enctype="multipart/form-data" action="/"
+		method="POST">
+		<p>
+			<input id="fileInput" type="file" name="uploadingfiles"
+				onchange="updateSize();" multiple="multiple" /> selected files: <span
+				id="fileNum">0</span>; total size: <span id="fileSize">0</span>
+		</p>
+		<p>
+			<input type="submit" value="Upload files" />
+		</p>
+	</form>
+
+	<div>
+		<div>Uploaded files:</div>
+		<li th:each="file : ${files}">
+			<a th:href="'img/' + ${file}" th:text="'img/' + ${file}" />
+		</li>
+	</div>
+
+	<script src="js/app.js"/>
+</body>
+</html>
