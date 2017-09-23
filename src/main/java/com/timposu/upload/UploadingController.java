@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class UploadingController {
 	
-	public static final String UPLOAD_DIR = System.getProperty("user.dir") + "/src/main/resources/static/img";
+	public static final String UPLOAD_DIR = System.getProperty("user.dir") + "/img";
 	
 	@GetMapping("/")
 	public String uploading(Model model) {
@@ -35,7 +35,7 @@ public class UploadingController {
 			throws IOException {
 		
 		for (MultipartFile uploadfile : files) {
-			File file = new File(UPLOAD_DIR + "/" + uploadfile.getOriginalFilename());
+			File file = new File(UPLOAD_DIR + "/" + uploadfile.getOriginalFilename() + "/");
 			uploadfile.transferTo(file);
 		}
 		return "redirect:/";

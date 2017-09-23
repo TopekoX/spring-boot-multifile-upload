@@ -10,7 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public static void main(String[] args) throws IOException {
-		//new File(UploadingController.UPLOAD_DIR).mkdirs();
+		File file = new File(UploadingController.UPLOAD_DIR);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
 		SpringApplication.run(DemoApplication.class, args);
 	}
 }
